@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BusinessTrack | Emma Murphy</title>
+  <style>
+:root{
+  --navy:#12233f;
+  --blue:#2f6fed;
+  --green:#1f8a70;
+  --ink:#172033;
+  --muted:#667085;
+  --line:#e6eaf0;
+  --soft:#f6f8fb;
+  --white:#fff;
+  --shadow:0 10px 28px rgba(18,35,63,.07);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#f3f5f8;line-height:1.5}
+button{font:inherit}
+.topbar{height:72px;background:var(--white);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;position:sticky;top:0;z-index:10}
+.brand{display:flex;align-items:center;gap:11px}.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800}.brand-name{font-weight:800;letter-spacing:-.02em}.brand-sub{font-size:11px;color:var(--muted)}
+.sample-badge{font-size:11px;font-weight:800;color:#8a5b00;background:#fff6df;border:1px solid #f2dfac;padding:7px 10px;border-radius:999px}
+.shell{max-width:1180px;margin:0 auto;padding:34px 22px 50px}
+.profile-hero{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:25px;display:flex;justify-content:space-between;gap:24px;box-shadow:var(--shadow)}
+.profile{display:flex;align-items:center;gap:18px}.avatar{width:78px;height:78px;border-radius:50%;background:linear-gradient(145deg,#dfe9fb,#b7c9ea);display:grid;place-items:center;color:var(--navy);font-weight:900;font-size:22px;border:4px solid #fff;box-shadow:0 0 0 1px #d8dfeb}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:800;color:var(--blue);margin:0 0 5px}
+h1,h2,h3,p{margin-top:0}h1{margin-bottom:4px;font-size:30px;letter-spacing:-.03em}h2{font-size:25px;letter-spacing:-.02em;margin-bottom:5px}h3{font-size:18px;margin-bottom:0}
+.muted{color:var(--muted)}.small{font-size:13px}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.chips span{font-size:11px;background:var(--soft);border:1px solid var(--line);padding:5px 8px;border-radius:999px}
+.profile-meta{display:grid;grid-template-columns:repeat(3,100px);align-items:center}.profile-meta div{padding-left:18px;border-left:1px solid var(--line)}.profile-meta span{display:block;font-size:11px;color:var(--muted)}.profile-meta strong{font-size:20px}
+.tabs{display:flex;gap:4px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:5px;margin:18px 0;overflow:auto}.tab{border:0;background:transparent;padding:11px 15px;border-radius:10px;color:var(--muted);font-weight:700;white-space:nowrap;cursor:pointer}.tab.active{background:var(--navy);color:#fff}
+.section{display:none}.section.active{display:block}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:28px 2px 18px}
+.overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.summary-card,.year-card,.company-card,.achievement-card,.journey{background:var(--white);border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 5px 18px rgba(18,35,63,.04)}
+.card-title{display:flex;justify-content:space-between;gap:12px;font-weight:800}.metric{font-size:12px;color:var(--green);font-weight:800}.progress{height:7px;background:#edf1f6;border-radius:999px;margin:18px 0 8px;overflow:hidden}.progress span{display:block;height:100%;background:var(--green);border-radius:999px}
+.text-btn{border:0;background:none;padding:0;color:var(--blue);font-weight:800;font-size:13px;cursor:pointer}.skill-mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}.skill-mini span{font-size:11px;border:1px solid var(--line);padding:5px 7px;border-radius:7px;background:var(--soft)}
+.journey{margin-top:14px}.journey-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:14px}.timeline-row{display:grid;grid-template-columns:75px 1fr 1fr;gap:12px;border-top:1px solid var(--line);padding:16px 0}.timeline-row:first-child{border-top:0}.year-tag{font-weight:900;color:var(--navy)}.placement-link{border:1px solid var(--line);background:#fbfcfe;border-radius:12px;padding:12px;cursor:pointer;text-align:left;width:100%}.placement-link:hover{border-color:#b9c9e7}.placement-link strong{display:block}.status{display:inline-block;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;padding:4px 6px;border-radius:5px;margin-bottom:6px}.done{background:#e8f6f1;color:#1f6e5c}.current{background:#e9f0ff;color:#2f5db7}
+.academic-list{display:grid;gap:12px}.year-card{padding:20px}.year-top{display:flex;justify-content:space-between;align-items:start}.grade-average{font-weight:900;color:var(--green)}.module-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}.module-table th,.module-table td{text-align:left;padding:9px;border-bottom:1px solid var(--line)}.module-table th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+.company-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.company-card{cursor:pointer}.company-card:hover{transform:translateY(-1px);box-shadow:var(--shadow)}.company-head{display:flex;justify-content:space-between;gap:12px}.company-card h3{margin-bottom:3px}.company-meta{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.company-meta span{font-size:11px;background:var(--soft);padding:5px 7px;border-radius:7px}.company-card .open{color:var(--blue);font-size:12px;font-weight:800}
+.achievement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.achievement-card h3{font-size:16px}.achievement-type{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);font-weight:900}.achievement-card p{font-size:13px;color:var(--muted);margin:8px 0 0}
+.actions{display:flex;gap:8px}.primary,.secondary{border-radius:9px;padding:9px 12px;font-weight:800;cursor:pointer}.primary{background:var(--navy);color:#fff;border:1px solid var(--navy)}.secondary{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.modal{position:fixed;inset:0;background:rgba(10,20,35,.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.modal.show{display:flex}.modal-panel{position:relative;background:#fff;border-radius:18px;max-width:760px;width:100%;max-height:90vh;overflow:auto;padding:28px;box-shadow:0 25px 70px rgba(0,0,0,.2)}.close{position:absolute;right:15px;top:12px;border:0;background:#f3f5f8;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:20px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.detail-box{border:1px solid var(--line);border-radius:12px;padding:14px}.detail-box h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}.detail-box ul{margin:0;padding-left:18px;font-size:13px}.doc-list{display:grid;gap:8px;margin-top:8px}.doc{display:flex;justify-content:space-between;gap:12px;padding:10px;border:1px solid var(--line);border-radius:9px;font-size:13px}.doc span{color:var(--muted)}
+footer{max-width:1180px;margin:0 auto;padding:0 22px 35px;display:flex;justify-content:space-between;color:#8a93a3;font-size:11px}
+@media(max-width:900px){.overview-grid{grid-template-columns:repeat(2,1fr)}.company-grid{grid-template-columns:1fr}.achievement-grid{grid-template-columns:repeat(2,1fr)}.profile-hero{align-items:flex-start}.profile-meta{grid-template-columns:repeat(3,80px)}}
+@media(max-width:650px){.topbar{padding:0 14px}.brand-sub{display:none}.sample-badge{font-size:9px}.shell{padding:20px 12px 40px}.profile-hero{display:block;padding:18px}.profile-meta{margin-top:18px;grid-template-columns:repeat(3,1fr)}.profile-meta div{padding-left:10px}.profile{align-items:flex-start}.avatar{width:62px;height:62px;font-size:18px}.overview-grid,.achievement-grid{grid-template-columns:1fr}.section-head{display:block}.actions{margin-top:12px}.timeline-row{grid-template-columns:58px 1fr}.timeline-row .academic-side{grid-column:2}.detail-grid{grid-template-columns:1fr}footer{display:block;padding:0 12px 25px}.profile h1{font-size:25px}}
+
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">B</div>
+      <div>
+        <div class="brand-name">BusinessTrack</div>
+        <div class="brand-sub">Academic & professional development record</div>
+      </div>
+    </div>
+    <div class="sample-badge">FICTIONAL • SAMPLE DATA</div>
+  </header>
+
+  <main class="shell">
+    <section class="profile-hero">
+      <div class="profile">
+        <div class="avatar" aria-label="Fictional student profile image">EM</div>
+        <div>
+          <p class="eyebrow">Student profile</p>
+          <h1>Emma Murphy</h1>
+          <p class="muted">BA (Hons) Business Management • Year 4</p>
+          <div class="chips">
+            <span>Final placement</span>
+            <span>FutureTech</span>
+            <span>Academic + professional record</span>
+          </div>
+        </div>
+      </div>
+      <div class="profile-meta">
+        <div><span>Journey</span><strong id="journeyProgress">75%</strong></div>
+        <div><span>Placements</span><strong>4</strong></div>
+        <div><span>Skills</span><strong id="skillCount">8</strong></div>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Student record sections">
+      <button class="tab active" data-section="overview">Overview</button>
+      <button class="tab" data-section="academic">Academic</button>
+      <button class="tab" data-section="professional">Professional</button>
+      <button class="tab" data-section="achievements">Achievements & Certificates</button>
+    </nav>
+
+    <section id="overview" class="section active">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <h2>Emma's four-year journey</h2>
+          <p class="muted">One place to see academic progress, placement experience and wider achievements.</p>
+        </div>
+      </div>
+
+      <div class="overview-grid">
+        <article class="summary-card">
+          <div class="card-title"><span>Academic progress</span><span class="metric">3.1 / 4.0</span></div>
+          <div class="progress"><span style="width:78%"></span></div>
+          <p class="muted small">Year 4 is currently in progress.</p>
+          <button class="text-btn" data-go="academic">View academic record →</button>
+        </article>
+        <article class="summary-card">
+          <div class="card-title"><span>Professional journey</span><span class="metric">4 placements</span></div>
+          <p class="muted small">Three completed placements and one current final placement.</p>
+          <button class="text-btn" data-go="professional">View placements →</button>
+        </article>
+        <article class="summary-card">
+          <div class="card-title"><span>Skills developed</span><span class="metric">8</span></div>
+          <div class="skill-mini">
+            <span>Communication</span><span>Excel</span><span>Leadership</span><span>Data analysis</span>
+          </div>
+        </article>
+        <article class="summary-card">
+          <div class="card-title"><span>Wider achievements</span><span class="metric" id="achievementMetric">5</span></div>
+          <p class="muted small">Awards, certificates, projects and professional development outside the core journey.</p>
+          <button class="text-btn" data-go="achievements">View achievements →</button>
+        </article>
+      </div>
+
+      <div class="journey">
+        <div class="journey-head">
+          <div>
+            <p class="eyebrow">Four-year timeline</p>
+            <h3>Academic year + placement</h3>
+          </div>
+          <span class="muted small">Click a company to open its record.</span>
+        </div>
+        <div id="timeline"></div>
+      </div>
+    </section>
+
+    <section id="academic" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Academic record</p>
+          <h2>Modules, grades and learning</h2>
+          <p class="muted">Academic information is kept separate so employers can scan the record quickly.</p>
+        </div>
+      </div>
+      <div id="academicYears" class="academic-list"></div>
+    </section>
+
+    <section id="professional" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Professional journey</p>
+          <h2>Placement experience</h2>
+          <p class="muted">Open a company to see its feedback, objectives, skills and evidence together.</p>
+        </div>
+      </div>
+      <div id="companyGrid" class="company-grid"></div>
+    </section>
+
+    <section id="achievements" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Beyond the core journey</p>
+          <h2>Achievements & certificates</h2>
+          <p class="muted">A separate space for activities that sit outside the academic modules and placements.</p>
+        </div>
+        <div class="actions">
+          <button class="primary" id="addAchievement">+ Add achievement</button>
+          <button class="secondary" id="addCertificate">+ Add certificate</button>
+        </div>
+      </div>
+      <div id="achievementList" class="achievement-grid"></div>
+    </section>
+  </main>
+
+  <div class="modal" id="companyModal" aria-hidden="true">
+    <div class="modal-panel">
+      <button class="close" id="closeModal" aria-label="Close">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div>BusinessTrack prototype • fictional sample data</div>
+    <div>Designed for a student, college and employer workflow</div>
+  </footer>
+
+  <script>
+const placements = [
+  {
+    year:"Year 1", company:"Green & Co", role:"Business Assistant", status:"Completed",
+    skills:["Communication","Teamwork","Excel"], objectives:["Customer communication","Basic reporting"],
+    feedback:"Emma quickly became confident communicating with colleagues and supporting day-to-day business tasks.",
+    documents:["Placement agreement","Employer reference","Placement review"],
+    learning:"Applied business fundamentals in a real workplace and developed confidence with professional communication."
+  },
+  {
+    year:"Year 2", company:"Bright Marketing", role:"Marketing Intern", status:"Completed",
+    skills:["Market research","Presentation","Content planning"], objectives:["Market research","Campaign support"],
+    feedback:"Emma showed strong initiative when researching customer trends and presenting findings to the team.",
+    documents:["Placement agreement","Employer feedback","Employer reference"],
+    learning:"Connected marketing theory with customer research, campaign planning and presentation skills."
+  },
+  {
+    year:"Year 3", company:"Dublin Business Solutions", role:"Business Analyst Intern", status:"Completed",
+    skills:["Data analysis","Problem solving","Excel"], objectives:["Analyse business data","Improve reporting"],
+    feedback:"Emma produced clear analysis and became increasingly independent when solving reporting problems.",
+    documents:["Placement agreement","Employer reference","Placement review"],
+    learning:"Developed analytical thinking and learned how data can support practical business decisions."
+  },
+  {
+    year:"Year 4", company:"FutureTech", role:"Business Intern", status:"Current",
+    skills:["Leadership","Data analysis","Stakeholder management"], objectives:["Lead a small project","Present recommendations","Complete final review"],
+    feedback:"Mid-placement feedback: Emma is progressing well and is taking more ownership of stakeholder communication.",
+    documents:["Placement agreement","Mid-placement review","Final employer reference"],
+    learning:"Current focus is leadership, stakeholder management and applying learning across a complete business project."
+  }
+];
+
+const academics = [
+  {year:"Year 1", average:"68%", modules:[["Business Fundamentals","68%"],["Marketing Principles","72%"],["Accounting for Business","64%"],["Business Information Systems","70%"]]},
+  {year:"Year 2", average:"71%", modules:[["Consumer Behaviour","74%"],["Business Economics","69%"],["Digital Marketing","72%"],["Management Accounting","69%"]]},
+  {year:"Year 3", average:"73%", modules:[["Strategic Management","76%"],["Business Analytics","71%"],["Human Resource Management","74%"],["Operations Management","71%"]]},
+  {year:"Year 4", average:"Provisional", modules:[["Business Strategy","Provisional"],["Technology for Business","Provisional"],["Final Project","In progress"],["Professional Development","In progress"]]}
+];
+
+const defaultAchievements = [
+  {type:"Award",title:"Student Leadership Award",detail:"Recognised for leading a group project and supporting peer collaboration."},
+  {type:"Certificate",title:"Excel for Business Certificate",detail:"Completed additional professional development in Excel and business reporting."},
+  {type:"Project",title:"Market Research Project",detail:"Completed an independent customer research project alongside the degree."},
+  {type:"Development",title:"Presentation Skills Workshop",detail:"Completed a professional communication workshop."},
+  {type:"Certificate",title:"Digital Marketing Fundamentals",detail:"Completed an external learning certificate in digital marketing."}
+];
+
+let achievements = JSON.parse(localStorage.getItem("btAchievements") || "null") || defaultAchievements;
+
+function save(){localStorage.setItem("btAchievements",JSON.stringify(achievements));}
+
+function renderTimeline(){
+  document.getElementById("timeline").innerHTML = placements.map((p,i)=>`
+    <div class="timeline-row">
+      <div class="year-tag">${p.year}</div>
+      <div class="academic-side">
+        <strong>Academic record</strong>
+        <div class="muted small">${academics[i].modules.length} modules • Average: ${academics[i].average}</div>
+      </div>
+      <button class="placement-link" onclick="openCompany(${i})">
+        <span class="status ${p.status==="Current"?"current":"done"}">${p.status}</span>
+        <strong>${p.company}</strong>
+        <span class="muted small">${p.role}</span>
+      </button>
+    </div>`).join("");
+}
+
+function renderAcademic(){
+  document.getElementById("academicYears").innerHTML = academics.map(a=>`
+    <article class="year-card">
+      <div class="year-top"><div><p class="eyebrow">${a.year}</p><h3>Academic modules</h3></div><div class="grade-average">${a.average}</div></div>
+      <table class="module-table"><thead><tr><th>Module</th><th>Result</th></tr></thead>
+      <tbody>${a.modules.map(m=>`<tr><td>${m[0]}</td><td><strong>${m[1]}</strong></td></tr>`).join("")}</tbody></table>
+    </article>`).join("");
+}
+
+function renderCompanies(){
+  document.getElementById("companyGrid").innerHTML = placements.map((p,i)=>`
+    <article class="company-card" onclick="openCompany(${i})">
+      <div class="company-head">
+        <div><p class="eyebrow">${p.year}</p><h3>${p.company}</h3><div class="muted small">${p.role}</div></div>
+        <span class="status ${p.status==="Current"?"current":"done"}">${p.status}</span>
+      </div>
+      <div class="company-meta">${p.skills.map(s=>`<span>${s}</span>`).join("")}</div>
+      <div class="open">Open placement record →</div>
+    </article>`).join("");
+}
+
+function renderAchievements(){
+  document.getElementById("achievementList").innerHTML = achievements.map(a=>`
+    <article class="achievement-card">
+      <div class="achievement-type">${a.type}</div>
+      <h3>${a.title}</h3>
+      <p>${a.detail}</p>
+    </article>`).join("");
+  document.getElementById("achievementMetric").textContent = achievements.length;
+}
+
+function openCompany(i){
+  const p=placements[i];
+  document.getElementById("modalContent").innerHTML = `
+    <p class="eyebrow">${p.year} • ${p.status}</p>
+    <h2>${p.company}</h2>
+    <p class="muted">${p.role}</p>
+    <div class="detail-grid">
+      <div class="detail-box"><h4>Skills developed</h4><ul>${p.skills.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+      <div class="detail-box"><h4>Objectives</h4><ul>${p.objectives.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+      <div class="detail-box"><h4>Employer feedback</h4><p class="small">${p.feedback}</p></div>
+      <div class="detail-box"><h4>Academic learning</h4><p class="small">${p.learning}</p></div>
+    </div>
+    <div class="detail-box" style="margin-top:12px"><h4>Documents & evidence from ${p.company}</h4>
+      <div class="doc-list">${p.documents.map(d=>`<div class="doc"><strong>${d}</strong><span>Sample record</span></div>`).join("")}</div>
+    </div>`;
+  document.getElementById("companyModal").classList.add("show");
+  document.getElementById("companyModal").setAttribute("aria-hidden","false");
+}
+
+function closeModal(){document.getElementById("companyModal").classList.remove("show");document.getElementById("companyModal").setAttribute("aria-hidden","true");}
+
+document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>switchSection(btn.dataset.section)));
+document.querySelectorAll("[data-go]").forEach(btn=>btn.addEventListener("click",()=>switchSection(btn.dataset.go)));
+document.getElementById("closeModal").addEventListener("click",closeModal);
+document.getElementById("companyModal").addEventListener("click",e=>{if(e.target.id==="companyModal")closeModal();});
+
+function switchSection(id){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.section===id));
+  document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===id));
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.getElementById("addAchievement").addEventListener("click",()=>{
+  const title=prompt("Achievement name:");
+  if(!title) return;
+  const detail=prompt("Short description:");
+  if(!detail) return;
+  achievements.unshift({type:"Achievement",title,detail});
+  save(); renderAchievements();
+});
+document.getElementById("addCertificate").addEventListener("click",()=>{
+  const title=prompt("Certificate name:");
+  if(!title) return;
+  const detail=prompt("Short description:");
+  if(!detail) return;
+  achievements.unshift({type:"Certificate",title,detail});
+  save(); renderAchievements();
+});
+
+renderTimeline();renderAcademic();renderCompanies();renderAchievements();
+
+</script>
+</body>
+</html>
